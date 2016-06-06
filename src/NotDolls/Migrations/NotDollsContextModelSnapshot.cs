@@ -16,12 +16,32 @@ namespace NotDolls.Migrations
                 .HasAnnotation("ProductVersion", "1.0.0-rc2-20901")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("NotDolls.Models.Geek", b =>
+                {
+                    b.Property<int>("GeekId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<string>("EmailAddress");
+
+                    b.Property<string>("Location");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("GeekId");
+
+                    b.ToTable("Geek");
+                });
+
             modelBuilder.Entity("NotDolls.Models.Inventory", b =>
                 {
                     b.Property<int>("InventoryId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("CreatedDate");
+
+                    b.Property<int>("GeekId");
 
                     b.Property<string>("Height");
 
@@ -37,15 +57,13 @@ namespace NotDolls.Migrations
 
                     b.Property<bool>("Sold");
 
-                    b.Property<int>("UserId");
-
                     b.Property<string>("Weight");
 
                     b.Property<int>("Year");
 
                     b.HasKey("InventoryId");
 
-                    b.ToTable("Inventories");
+                    b.ToTable("Inventory");
                 });
 
             modelBuilder.Entity("NotDolls.Models.InventoryImage", b =>
@@ -59,25 +77,7 @@ namespace NotDolls.Migrations
 
                     b.HasKey("InventoryImageId");
 
-                    b.ToTable("Images");
-                });
-
-            modelBuilder.Entity("NotDolls.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("CreatedDate");
-
-                    b.Property<string>("EmailAddress");
-
-                    b.Property<string>("Location");
-
-                    b.Property<string>("Username");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("Users");
+                    b.ToTable("InventoryImage");
                 });
         }
     }

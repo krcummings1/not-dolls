@@ -8,9 +8,9 @@ namespace NotDolls.Models
             : base(options)
         { }
 
-        public DbSet<Inventory> Inventories { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<InventoryImage> Images { get; set; }
+        public DbSet<Inventory> Inventory { get; set; }
+        public DbSet<Geek> Geek { get; set; }
+        public DbSet<InventoryImage> InventoryImage { get; set; }
     }
 
 }

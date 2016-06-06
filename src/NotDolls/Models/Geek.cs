@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace NotDolls.Models
 {
-    public class User
+    public class Geek
     {
-        public int UserId { get; set; }
+        
+        public int GeekId { get; set; }
         public string Username { get; set; }
         public string EmailAddress { get; set; }
         public string Location { get; set; }

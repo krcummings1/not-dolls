@@ -18,6 +18,6 @@ namespace NotDolls.Models
         public string Quality { get; set; }
         public DateTime CreatedDate { get; set; }
         public bool Sold { get; set; }
-        public int UserId { get; set; }
+        public int GeekId { get; set; }
     }
 }
