@@ -19,5 +19,8 @@ namespace NotDolls.Models
         public DateTime CreatedDate { get; set; }
         public bool Sold { get; set; }
         public int GeekId { get; set; }
+
+        public Geek Geek { get; set; }
+        public ICollection<InventoryImage> ActionShots { get; set; }
     }
 }

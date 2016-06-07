@@ -8,9 +8,10 @@ using NotDolls.Models;
 namespace NotDolls.Migrations
 {
     [DbContext(typeof(NotDollsContext))]
-    partial class NotDollsContextModelSnapshot : ModelSnapshot
+    [Migration("20160607133548_ImageMetaData")]
+    partial class ImageMetaData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rc2-20901")
@@ -63,8 +64,6 @@ namespace NotDolls.Migrations
 
                     b.HasKey("InventoryId");
 
-                    b.HasIndex("GeekId");
-
                     b.ToTable("Inventory");
                 });
 
@@ -81,25 +80,7 @@ namespace NotDolls.Migrations
 
                     b.HasKey("InventoryImageId");
 
-                    b.HasIndex("InventoryId");
-
                     b.ToTable("InventoryImage");
-                });
-
-            modelBuilder.Entity("NotDolls.Models.Inventory", b =>
-                {
-                    b.HasOne("NotDolls.Models.Geek")
-                        .WithMany()
-                        .HasForeignKey("GeekId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("NotDolls.Models.InventoryImage", b =>
-                {
-                    b.HasOne("NotDolls.Models.Inventory")
-                        .WithMany()
-                        .HasForeignKey("InventoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

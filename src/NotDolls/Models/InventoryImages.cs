@@ -10,5 +10,8 @@ namespace NotDolls.Models
         public int InventoryImageId { get; set; }
         public string Image { get; set; }
         public int InventoryId { get; set; }
+        public string MetaData { get; set; }
+
+        public Inventory Inventory { get; set; }
     }
 }

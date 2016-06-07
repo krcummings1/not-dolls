@@ -34,7 +34,15 @@ namespace NotDolls.Controllers
             }
 
             IQueryable<object> users = from user in _context.Geek
-                                           select user;
+                                       select new {
+                                          user.GeekId,
+                                          user.Username,
+                                          user.EmailAddress,
+                                          user.CreatedDate,
+                                          user.Location,
+                                          Figurines = String.Format("/api/Inventory?GeekId={0}", user.GeekId)
+                                       };
+            
 
             if (users == null)
             {

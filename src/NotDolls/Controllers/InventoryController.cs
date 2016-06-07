@@ -27,15 +27,25 @@ namespace NotDolls.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery]int? GeekId, [FromQuery]int? Year)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            IQueryable<object> inventory = from i in _context.Inventory
-                                           select i; 
+            IQueryable<Inventory> inventory = from i in _context.Inventory
+                                              select i;
+
+            if (Year != null)
+            {
+                inventory = inventory.Where(inv => inv.Year == Year);
+            }
+
+            if (GeekId != null)
+            {
+                inventory = inventory.Where(inv => inv.GeekId == GeekId);
+            }
 
             if (inventory == null)
             {
@@ -44,6 +54,7 @@ namespace NotDolls.Controllers
 
             return Ok(inventory);
         }
+
 
         // GET api/values/5
         [HttpGet("{id}", Name = "GetInventory")]
