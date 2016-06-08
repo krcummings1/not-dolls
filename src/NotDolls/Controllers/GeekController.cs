@@ -80,7 +80,19 @@ namespace NotDolls.Controllers
                 return BadRequest(ModelState);
             }
 
+
+            var existingUser = from g in _context.Geek
+                               where g.Username == geek.Username
+                               select g;
+
+            if (existingUser != null)
+            {
+                return new StatusCodeResult(StatusCodes.Status409Conflict);
+            }
+
+
             _context.Geek.Add(geek);
+
             try
             {
                 _context.SaveChanges();
@@ -122,7 +134,7 @@ namespace NotDolls.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!GeekExists(id))
+                if (!GeekExists(geek.GeekId))
                 {
                     return NotFound();
                 }

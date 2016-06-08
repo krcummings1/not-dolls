@@ -39,9 +39,10 @@ namespace NotDolls
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowDevelopmentEnvironment",
-                    builder => builder.WithOrigins("http://localhost:8080")
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
             });
         }
 
