@@ -85,7 +85,7 @@ namespace NotDolls.Controllers
                                where g.Username == geek.Username
                                select g;
 
-            if (existingUser != null)
+            if (existingUser.Count<Geek>() > 0)
             {
                 return new StatusCodeResult(StatusCodes.Status409Conflict);
             }
