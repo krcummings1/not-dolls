@@ -13,6 +13,7 @@ namespace NotDolls.Models
         public string EmailAddress { get; set; }
         public string Location { get; set; }
         public DateTime CreatedDate { get; set; }
+        public string FigurineHref { get; set; }
 
         public ICollection<Inventory> Figurines { get; set; }
     }

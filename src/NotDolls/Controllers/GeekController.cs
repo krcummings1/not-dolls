@@ -26,23 +26,27 @@ namespace NotDolls.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] string username)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            IQueryable<object> users = from user in _context.Geek
-                                       select new {
-                                          user.GeekId,
-                                          user.Username,
-                                          user.EmailAddress,
-                                          user.CreatedDate,
-                                          user.Location,
-                                          Figurines = String.Format("/api/Inventory?GeekId={0}", user.GeekId)
+            IQueryable<Geek> users = from user in _context.Geek
+                                       select new Geek {
+                                          GeekId = user.GeekId,
+                                          Username = user.Username,
+                                          EmailAddress = user.EmailAddress,
+                                          CreatedDate = user.CreatedDate,
+                                          Location = user.Location,
+                                          FigurineHref = String.Format("/api/Inventory?GeekId={0}", user.GeekId)
                                        };
             
+            if (username != null)
+            {
+                users = users.Where(g => g.Username == username);
+            }
 
             if (users == null)
             {
