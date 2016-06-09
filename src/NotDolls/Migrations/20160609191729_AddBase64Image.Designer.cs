@@ -8,9 +8,10 @@ using NotDolls.Models;
 namespace NotDolls.Migrations
 {
     [DbContext(typeof(NotDollsContext))]
-    partial class NotDollsContextModelSnapshot : ModelSnapshot
+    [Migration("20160609191729_AddBase64Image")]
+    partial class AddBase64Image
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rc2-20901")

@@ -9,6 +9,7 @@ namespace NotDolls.Models
     {
         public int InventoryImageId { get; set; }
         public string Image { get; set; }
+        public byte[] Base64Image { get; set; }
         public int InventoryId { get; set; }
         public string MetaData { get; set; }
 
